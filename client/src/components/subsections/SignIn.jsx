@@ -64,6 +64,7 @@ const SignIn = ({mode, API_URL, username_cookies, setUserCallback,
                             "Content-Type": "application/json"
                         }
                     }).then((response) => {
+                        history.push("/");
                         if(Object.keys(response).indexOf(error) !== -1){
                             setError(response.error);
                         }
@@ -82,6 +83,9 @@ const SignIn = ({mode, API_URL, username_cookies, setUserCallback,
                                     break;
                                 case 500:
                                     setError("Problemy z połączeniem. Spróbuj ponownie");
+                                    break;
+                                case 501:
+                                    setError("Problemy z łącznością. Spróbuj ponownie");
                                     break;
                                 case 101:
                                     history.push("/signin");

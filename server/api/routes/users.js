@@ -10,6 +10,7 @@ const User = require("../models/user");
 const whitelist = ['https://knotes-app.netlify.app', 'http://knotes-app.netlify.app']
 const corsOptions = {
   origin: (origin, callback) => {
+    console.log(origin);
     if (whitelist.indexOf(origin) !== -1) {
       callback(null, true)
     } else {
