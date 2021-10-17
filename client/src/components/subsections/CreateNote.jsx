@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 
 import { SectionContainer } from "../../styled/general.jsx";
@@ -11,6 +11,8 @@ const CreateNotePanel = ({username_cookies, currentData, API_URL}) => {
 
     const [title, setTitle] = useState("");
     const [isSignedIn, toggleIsSignedIn] = useState(null);
+
+    const history = useHistory();
 
     useEffect(() => {
         if(username_cookies["username"] !== undefined){
@@ -38,7 +40,8 @@ const CreateNotePanel = ({username_cookies, currentData, API_URL}) => {
 
             axios.post(`${API_URL}/notes/createNote`, data)
             .then((response) => {
-                //history.push("/note/read/"+response["createdNote"]["_id"]);
+                console.log(response);
+                history.push("/note/read/"+response["data"]["createdNote"]["_id"]);
             })
             .catch((error) => console.log(error));
         }
