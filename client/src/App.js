@@ -10,7 +10,7 @@ const Main = React.lazy(() => {
 
 function App() {
 
-  const API_URL = "http://localhost:5000";
+  const API_URL = "https://serv-mini-piknik.herokuapp.com";
 
   return (
     <CookiesProvider>

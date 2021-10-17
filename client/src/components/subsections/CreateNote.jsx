@@ -19,7 +19,7 @@ const CreateNotePanel = ({username_cookies, currentData, API_URL}) => {
             }
             else toggleIsSignedIn(false);
         }
-        else if(currentData !== {}){
+        else if(currentData !== null){
             if(currentData["email"] !== undefined && currentData["email"].length > 0 
             && currentData["token"] !== undefined && currentData["token"].length > 0) toggleIsSignedIn(true);
             else toggleIsSignedIn(false);

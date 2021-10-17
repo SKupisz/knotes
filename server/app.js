@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const morgan = require("morgan");
 const cors = require("cors");
+const serverless = require("serverless-http");
 
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
@@ -62,3 +63,4 @@ app.use((error, req, res, next) => {
 });
 
 module.exports = app;
+module.exports.handler = serverless(app);
