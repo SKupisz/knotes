@@ -50,6 +50,11 @@ const DisplayNote = ({API_URL, username_cookies, currentData}) => {
         }
     }, []);
 
+    const changeTheNote = (e) => {
+        const content = e.target.value;
+        setNoteContent(content);
+    }
+
     const updateThisCrapness = (noteId) => {
         axios.patch(`${API_URL}/notes/updateNote/${noteId}`,{
             email: username_cookies["username"] === undefined ? currentData["email"] : username_cookies["username"]["email"],
@@ -97,7 +102,7 @@ const DisplayNote = ({API_URL, username_cookies, currentData}) => {
                 </DisplayNoteHeader>
                 <DisplayNoteTextarea className="block-center"
                 value={noteContent} placeholder="Treść notatki..."
-                onChange={(e) => {setNoteContent(e.target.value)}}/></>}
+                onChange={(e) => {changeTheNote(e)}}/></>}
             </DisplayNoteWrapper>
         </DisplayNoteContainer>
     </SectionContainer>;

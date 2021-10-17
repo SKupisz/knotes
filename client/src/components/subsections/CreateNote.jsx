@@ -38,7 +38,7 @@ const CreateNotePanel = ({username_cookies, currentData, API_URL}) => {
 
             axios.post(`${API_URL}/notes/createNote`, data)
             .then((response) => {
-                console.log(response);
+                //history.push("/note/read/"+response["createdNote"]["_id"]);
             })
             .catch((error) => console.log(error));
         }

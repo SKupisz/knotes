@@ -4,7 +4,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 
 import { NavbarContainer, LeftPart, RightPart, NavbarElem, NavbarLogoWrapper, ResponsiveOpen } from "../styled/navbar.jsx";
 
-const Navbar = () => {
+const Navbar = ({userData}) => {
     
     const [isOpened, toggleIsOpened] = useState(false);
 
@@ -25,14 +25,17 @@ const Navbar = () => {
         ],
         [
             {
+                ifNull: true, 
                 to: "/signin",
                 content: "Zaloguj się"
             },
             {
+                ifNull: true,
                 to: "/signup",
                 content: "Zarejestruj się"
             },
             {
+                ifNull: false,
                 to: "/logout",
                 content: "Wyloguj się"
             }
@@ -50,9 +53,9 @@ const Navbar = () => {
             </Link>)}
         </LeftPart>
         <RightPart>
-            {NavbarElems[1].map((elem, ind) => <Link to = {elem["to"]} key = {"rightElem"+ind} onClick = {() => toggleIsOpened(false)}><NavbarElem>
+            {NavbarElems[1].map((elem, ind) => (userData === null) === elem["ifNull"] ? <Link to = {elem["to"]} key = {"rightElem"+ind} onClick = {() => toggleIsOpened(false)}><NavbarElem>
                 {elem["content"]}
-            </NavbarElem></Link>)}
+            </NavbarElem></Link> : null)}
         </RightPart>
     </NavbarContainer>;
 };

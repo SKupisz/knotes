@@ -22,7 +22,7 @@ const Main = ({API_URL}) => {
 
     return <MainContainer className="block-center">
         <Router>    
-            <Navbar/>
+            <Navbar userData={userData}/>
             <Route exact path="/" component={() => <Welcome background={Welcome_Intro_Background} createImg={Welcome_Intro_Creating_Icon}/>}/>
             <Route exact path="/notes" component={() => <AllNotes username_cookies={usernameCookie}
                 currentData = {userData} API_URL={API_URL}/>}/>
