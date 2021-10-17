@@ -62,7 +62,7 @@ body{
 }
 
 .not-equal-passwds{
-  background: rgba(200,0,0,.3);
+  background: rgba(200,0,0,.1) !important;
 }
 
 @media screen and (min-width: 320px) {

@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const SigningContainer = styled.section`
     width: calc(90% - 20px);
     padding: 10px;
+    padding-bottom: calc(10px + 5vh);
     border-radius: 10px;
     box-shadow: 3px 3px 4px #000;
     background: rgb(26,26,26);
@@ -10,7 +11,9 @@ export const SigningContainer = styled.section`
     font-family: "Gemunu Libre", sans-serif;
     position: relative;
     top: 12vh;
-    height: 65vh;
+    min-height: 60vh;
+    height: fit-content;
+    margin-bottom: 3vh;
 
     @media screen and (min-width: 425px){
         width: calc(80% - 20px);
@@ -112,4 +115,12 @@ export const SigninSubmitBtn = styled.div`
     @media screen and (min-width: 768px){
         font-size: 2.3em;
     }
+`;
+
+export const ErrorLabel = styled.label`
+    font-size: 1.5em;
+    letter-spacing: 0.07em;
+    color: darkred;
+    text-shadow: 3px 3px 4px #000;
+    margin-bottom: 3vh;
 `;

@@ -1,4 +1,5 @@
 import React, {Suspense} from "react";
+import { CookiesProvider } from "react-cookie";
 import './App.css';
 
 const Main = React.lazy(() => {
@@ -8,12 +9,17 @@ const Main = React.lazy(() => {
 })
 
 function App() {
+
+  const API_URL = "http://localhost:5000";
+
   return (
-    <Suspense fallback={<div className="fallback-loader block-center">Ładowanie...</div>}>
-      <div className="App">
-        <Main/>
-      </div>
-    </Suspense>
+    <CookiesProvider>
+      <Suspense fallback={<div className="fallback-loader block-center">Ładowanie...</div>}>
+        <div className="App">
+          <Main API_URL={API_URL}/>
+        </div>
+      </Suspense>
+    </CookiesProvider>
   );
 }
 

@@ -33,7 +33,7 @@ const Navbar = () => {
                 content: "Zarejestruj się"
             },
             {
-                to: "/#",
+                to: "/logout",
                 content: "Wyloguj się"
             }
         ]
