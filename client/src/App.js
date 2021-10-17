@@ -1,24 +1,25 @@
-import logo from './logo.svg';
+import React, {Suspense} from "react";
+import { CookiesProvider } from "react-cookie";
 import './App.css';
 
+const Main = React.lazy(() => {
+  return new Promise(resolve => setTimeout(resolve, 0.5*1000)).then(
+    () => import("./components/Main.jsx")
+  )
+})
+
 function App() {
+
+  const API_URL = "https://serv-mini-piknik.herokuapp.com";
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <CookiesProvider>
+      <Suspense fallback={<div className="fallback-loader block-center">Ładowanie...</div>}>
+        <div className="App">
+          <Main API_URL={API_URL}/>
+        </div>
+      </Suspense>
+    </CookiesProvider>
   );
 }
 
